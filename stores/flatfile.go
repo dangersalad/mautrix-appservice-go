@@ -59,10 +59,10 @@ func (store *flatfileStore) load() error {
 	}
 
 	f, err := os.Open(store.filename)
-	defer f.Close()
 	if err != nil {
 		return fmt.Errorf("opening file %s for reading: %w", store.filename, err)
 	}
+	defer f.Close()
 
 	dec := json.NewDecoder(f)
 	if err := dec.Decode(store.BasicStateStore); err != nil {
