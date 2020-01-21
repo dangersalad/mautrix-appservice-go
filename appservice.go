@@ -212,6 +212,9 @@ func (as *AppService) Init() (bool, error) {
 		}
 	}
 
+	as.clients = make(map[string]*mautrix.Client)
+	as.intents = make(map[string]*IntentAPI)
+
 	as.Log.Debugln("Appservice initialized successfully.")
 	return true, nil
 }
