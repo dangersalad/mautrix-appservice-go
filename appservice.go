@@ -45,7 +45,9 @@ func Load(path string) (*AppService, error) {
 	}
 
 	var config = &AppService{}
-	yaml.Unmarshal(data, config)
+	if err := yaml.Unmarshal(data, config); err != nil {
+		return nil, fmt.Errorf("parsing config: %w", err)
+	}
 	return config, nil
 }
 
