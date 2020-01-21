@@ -45,6 +45,7 @@ func (store *flatfileStore) save() error {
 	if err := enc.Encode(store.BasicStateStore); err != nil {
 		return fmt.Errorf("writing state to file %s: %w", store.filename, err)
 	}
+	return nil
 }
 
 func (store *flatfileStore) load() error {
